@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import api from '@/api/board/index'
+
+const router = useRouter()
 
 // 1. 상태 관리
 const searchQuery = ref('')
@@ -9,8 +12,8 @@ const posts = ref([])
 
 // 2. 샘플 데이터 (실제 API 연동 시 이 부분을 fetch 로직으로 대체)
 const fetchPosts = async () => {
-  isLoading.value = true
   try {
+    isLoading.value = true
     const res = await api.getBoardList()
 
     posts.value = (res || []).map((post) => ({
@@ -30,45 +33,6 @@ const fetchPosts = async () => {
   } finally {
     isLoading.value = false
   }
-  // API 호출 시뮬레이션
-  //   setTimeout(() => {
-  //     posts.value = [
-  //       {
-  //         id: 1,
-  //         category: '카풀',
-  //         title: '강남역 2번 출구에서 판교역까지 같이 가실 분 구합니다',
-  //         author: '김철수',
-  //         content: '오늘 저녁 6시 30분쯤 출발할 예정입니다. 비흡연자 선호해요!',
-  //         createdAt: '12분 전',
-  //         views: 124,
-  //         comments: 5,
-  //         profileImg: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
-  //       },
-  //       {
-  //         id: 2,
-  //         category: '자유',
-  //         title: '오늘 퇴근길 택시 잡기 정말 힘드네요...',
-  //         author: '이영희',
-  //         content: '비가 와서 그런지 호출이 아예 안 잡혀요. 다들 조심히 들어가세요.',
-  //         createdAt: '1시간 전',
-  //         views: 89,
-  //         comments: 12,
-  //         profileImg: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anya',
-  //       },
-  //       {
-  //         id: 3,
-  //         category: '공지',
-  //         title: '[안내] 서비스 점검 예정 안내 (2/28)',
-  //         author: '운영자',
-  //         content: '더 나은 서비스를 위해 서버 점검이 진행될 예정입니다.',
-  //         createdAt: '3시간 전',
-  //         views: 1520,
-  //         comments: 0,
-  //         profileImg: 'https://api.dicebear.com/7.x/bottts/svg?seed=Admin',
-  //       },
-  //     ]
-  //     isLoading.value = false
-  //   }, 800)
 }
 
 // 3. 검색 필터 로직
@@ -84,8 +48,8 @@ onMounted(() => {
   fetchPosts()
 })
 
-const goToDetail = (id) => {
-  console.log(`${id}번 상세 페이지로 이동`)
+const goToDetail = (idx) => {
+  router.push(`/board/${idx}`)
 }
 </script>
 
@@ -119,7 +83,7 @@ const goToDetail = (id) => {
           v-for="post in filteredPosts"
           :key="post.id"
           class="post-card"
-          @click="goToDetail(post.id)"
+          @click="goToDetail(post.idx)"
         >
           <div class="card-body">
             <div class="post-meta">

@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     { path: '/', component: Main },
     { path: '/board/list', component: BoardList },
-    { path: '/board/detail', component: BoardDetail },
+    { path: '/board/:idx', component: BoardDetail }, // 동적 라우팅 (게시글 번호에 따라)
     { path: '/board/create', component: BoardCreate },
   ],
 })
