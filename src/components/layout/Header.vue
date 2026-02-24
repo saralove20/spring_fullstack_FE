@@ -1,5 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // 1. 상태 관리
 const isScrolled = ref(false)
@@ -22,8 +25,8 @@ const handleLogin = () => {
   console.log('로그인 페이지로 이동')
 }
 
-const handleSignup = () => {
-  console.log('회원가입 페이지로 이동')
+const goToSignup = () => {
+  router.push('/signup')
 }
 </script>
 
@@ -39,7 +42,7 @@ const handleSignup = () => {
       <!-- 인증 섹션 -->
       <div class="auth-section">
         <button @click="handleLogin" class="auth-btn">로그인</button>
-        <button @click="handleSignup" class="auth-btn highlight">시작하기</button>
+        <button @click="goToSignup" class="auth-btn highlight">시작하기</button>
       </div>
     </div>
   </header>
