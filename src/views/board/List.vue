@@ -1,5 +1,6 @@
 <script setup>
 import api from '@/api/board/index'
+import PageHeader from '@/components/layout/Header.vue'
 
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -58,6 +59,7 @@ const goToCreate = () => {
 </script>
 
 <template>
+  <PageHeader />
   <div class="board-wrapper">
     <!-- 상단 헤더 섹션 -->
     <header class="board-header">
@@ -123,7 +125,7 @@ const goToCreate = () => {
 .board-wrapper {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px 20px;
   background-color: #fcfcfd;
   min-height: 100vh;
   color: #1a1f36;
