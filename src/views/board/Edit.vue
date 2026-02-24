@@ -20,7 +20,7 @@ const formData = ref({
 })
 
 // 2. 카테고리 옵션
-const categories = ['일반', '카풀', '질문', '공지']
+const categories = ['자유', '카풀', '질문', '공지']
 
 // 3. 기존 데이터 불러오기 (초기화 로직)
 const fetchOriginalPost = async () => {

@@ -54,7 +54,7 @@ const handleCancel = () => {
   <div class="write-wrapper">
     <!-- 상단 헤더 -->
     <header class="write-header">
-      <h1 class="title">새 글 쓰기</h1>
+      <h1 class="title">새글쓰기</h1>
       <p class="subtitle">커뮤니티에 새로운 소식을 공유해보세요.</p>
     </header>
 
