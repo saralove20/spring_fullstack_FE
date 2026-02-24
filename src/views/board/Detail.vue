@@ -63,13 +63,21 @@ const goBack = () => {
   router.push('/board/list')
 }
 
-const handleEdit = (boardId) => {
+const goToEdit = (boardId) => {
   router.push(`/board/${boardId}/edit`)
 }
 
-const handleDelete = () => {
+const handleDelete = async () => {
   if (confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
-    console.log('게시글 삭제 요청')
+    try {
+      // 게시글 삭제
+      const res = await api.deleteBoard(boardId)
+      console.log(res)
+      // 게시글 목록 페이지로 이동
+      goBack()
+    } catch {
+      console.error('게시글을 삭제하는 중 오류 발생: ', error)
+    }
   }
 }
 </script>
@@ -80,7 +88,7 @@ const handleDelete = () => {
     <nav class="top-nav">
       <button @click="goBack" class="back-button"><span class="arrow">←</span> 목록으로</button>
       <div class="action-group">
-        <button @click="handleEdit(boardId)" class="text-btn">수정</button>
+        <button @click="goToEdit(boardId)" class="text-btn">수정</button>
         <button @click="handleDelete" class="text-btn delete">삭제</button>
       </div>
     </nav>

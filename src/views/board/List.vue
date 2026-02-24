@@ -27,8 +27,7 @@ const fetchPosts = async () => {
       profileImg: `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.idx}`, // 고유한 아바타 생성
     }))
 
-    console.log('게시글 목록 불러오는 api 실행 ')
-    console.log(res)
+    console.log('게시글 목록 조회: ', res)
   } catch (error) {
     console.error('게시글 목록을 불러오는 중 오류 발생: ', error)
   } finally {
