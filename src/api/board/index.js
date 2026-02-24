@@ -7,8 +7,8 @@ const getBoardList = async (req) => {
 }
 
 // 게시글 상세 조회
-const getBoardDetail = async (idx) => {
-  const res = await api.get(`/board/read/${idx}`)
+const getBoardDetail = async (boardId) => {
+  const res = await api.get(`/board/read/${boardId}`)
   return res.data
 }
 
@@ -18,4 +18,10 @@ const createBoard = async (boardCreateData) => {
   return res.data
 }
 
-export default { getBoardList, getBoardDetail, createBoard }
+// 게시글 수정
+const updateBoard = async (boardId, boardCreateData) => {
+  const res = await api.put(`/board/${boardId}`, boardCreateData)
+  return res.data
+}
+
+export default { getBoardList, getBoardDetail, createBoard, updateBoard }
