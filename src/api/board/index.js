@@ -24,4 +24,10 @@ const updateBoard = async (boardId, boardCreateData) => {
   return res.data
 }
 
-export default { getBoardList, getBoardDetail, createBoard, updateBoard }
+// 게시글 삭제
+const deleteBoard = async (boardId) => {
+  const res = await api.delete(`/board/${boardId}`)
+  return res.data
+}
+
+export default { getBoardList, getBoardDetail, createBoard, updateBoard, deleteBoard }
