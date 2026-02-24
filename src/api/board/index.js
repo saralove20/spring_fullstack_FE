@@ -12,4 +12,10 @@ const getBoardDetail = async (idx) => {
   return res.data
 }
 
-export default { getBoardList, getBoardDetail }
+// 게시글 작성
+const createBoard = async (boardCreateData) => {
+  const res = await api.post('/board/register', boardCreateData)
+  return res.data
+}
+
+export default { getBoardList, getBoardDetail, createBoard }

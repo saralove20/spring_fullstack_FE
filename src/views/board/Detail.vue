@@ -1,7 +1,8 @@
 <script setup>
+import api from '@/api/board/index'
+
 import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import api from '@/api/board/index'
 
 const router = useRouter()
 const route = useRoute()
@@ -25,7 +26,7 @@ const fetchPostDetail = async () => {
       author: '이구역의대장',
       createdAt: '2026-02-24 15:30',
       views: 124,
-      commentsCount: 5,
+      commentsCount: 2,
       profileImg: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
       comments: [
         {
