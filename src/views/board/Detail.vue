@@ -7,6 +7,8 @@ import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 
+const boardId = route.params.idx // URL에서 번호 가져오기
+
 // 1. 상태 관리
 const isLoading = ref(true)
 const post = ref(null)
@@ -15,8 +17,6 @@ const post = ref(null)
 const fetchPostDetail = async () => {
   try {
     isLoading.value = true
-
-    const boardId = route.params.idx // URL에서 번호 가져오기
 
     const res = await api.getBoardDetail(boardId)
 
@@ -46,10 +46,7 @@ const fetchPostDetail = async () => {
       ],
     }
 
-    console.log('게시글 상세정보 불러오는 api 실행 ')
-    console.log(res)
-    // 실제로는 route.params.idx 등을 사용해 호출합니다.
-    // const res = await api.getBoardDetail(idx);
+    console.log('게시글 상세정보 :', res)
   } catch (error) {
     console.error('상세 정보를 불러오는 중 오류 발생: ', error)
   } finally {
@@ -66,8 +63,8 @@ const goBack = () => {
   router.push('/board/list')
 }
 
-const handleEdit = () => {
-  console.log('수정하기 페이지로 이동')
+const handleEdit = (boardId) => {
+  router.push(`/board/${boardId}/edit`)
 }
 
 const handleDelete = () => {
@@ -83,7 +80,7 @@ const handleDelete = () => {
     <nav class="top-nav">
       <button @click="goBack" class="back-button"><span class="arrow">←</span> 목록으로</button>
       <div class="action-group">
-        <button @click="handleEdit" class="text-btn">수정</button>
+        <button @click="handleEdit(boardId)" class="text-btn">수정</button>
         <button @click="handleDelete" class="text-btn delete">삭제</button>
       </div>
     </nav>
