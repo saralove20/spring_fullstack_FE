@@ -6,9 +6,9 @@ const getBoardList = async (req) => {
   return res.data
 }
 
-// 게시글 상제 조회
-const getBoardDetail = async (req) => {
-  const res = await api.get('/board/read/3', req)
+// 게시글 상세 조회
+const getBoardDetail = async (idx) => {
+  const res = await api.get(`/board/read/${idx}`)
   return res.data
 }
 

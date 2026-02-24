@@ -1,6 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import api from '@/api/board/index'
+
+const router = useRouter()
 
 // 1. 상태 관리
 const searchQuery = ref('')
@@ -45,8 +48,8 @@ onMounted(() => {
   fetchPosts()
 })
 
-const goToDetail = (id) => {
-  console.log(`${id}번 상세 페이지로 이동`)
+const goToDetail = (idx) => {
+  router.push(`/board/${idx}`)
 }
 </script>
 
@@ -80,7 +83,7 @@ const goToDetail = (id) => {
           v-for="post in filteredPosts"
           :key="post.id"
           class="post-card"
-          @click="goToDetail(post.id)"
+          @click="goToDetail(post.idx)"
         >
           <div class="card-body">
             <div class="post-meta">

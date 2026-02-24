@@ -1,9 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import api from '@/api/board/index'
 
 const router = useRouter()
+const route = useRoute()
 
 // 1. 상태 관리
 const isLoading = ref(true)
@@ -13,9 +14,10 @@ const post = ref(null)
 const fetchPostDetail = async () => {
   try {
     isLoading.value = true
-    // const noticeId = route.params.num // URL에서 번호 가져오기
 
-    const res = await api.getBoardDetail()
+    const boardId = route.params.idx // URL에서 번호 가져오기
+
+    const res = await api.getBoardDetail(boardId)
 
     post.value = {
       ...res,
@@ -293,7 +295,7 @@ const handleDelete = () => {
 
 /* Post Body */
 .post-body {
-  min-height: 200px;
+  min-height: 100px;
   margin-bottom: 48px;
 }
 
