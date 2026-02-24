@@ -5,6 +5,7 @@ import BoardDetail from '@/views/board/Detail.vue'
 import BoardCreate from '@/views/board/Create.vue'
 import BoardEdit from '@/views/board/Edit.vue'
 import SIgnup from '@/views/User/SIgnup.vue'
+import Login from '@/views/User/Login.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,7 @@ const router = createRouter({
     { path: '/board/create', component: BoardCreate },
     { path: '/board/:idx/edit', component: BoardEdit },
     { path: '/signup', component: SIgnup },
+    { path: '/login', component: Login },
   ],
 })
 

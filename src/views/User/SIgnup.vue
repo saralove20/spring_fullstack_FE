@@ -1,5 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // 1. 상태 관리
 const isLoading = ref(false);
@@ -64,7 +67,7 @@ const handleSignup = async () => {
 };
 
 const goToLogin = () => {
-  console.log('로그인 페이지로 이동');
+  router.push('/login')
 };
 </script>
 

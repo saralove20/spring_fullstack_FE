@@ -21,8 +21,8 @@ onUnmounted(() => {
 })
 
 // 3. 버튼 액션
-const handleLogin = () => {
-  console.log('로그인 페이지로 이동')
+const goToLogin = () => {
+  router.push('/login')
 }
 
 const goToSignup = () => {
@@ -41,7 +41,7 @@ const goToSignup = () => {
 
       <!-- 인증 섹션 -->
       <div class="auth-section">
-        <button @click="handleLogin" class="auth-btn">로그인</button>
+        <button @click="goToLogin" class="auth-btn">로그인</button>
         <button @click="goToSignup" class="auth-btn highlight">시작하기</button>
       </div>
     </div>
