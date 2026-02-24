@@ -6,4 +6,10 @@ const getBoardList = async (req) => {
   return res.data
 }
 
-export default { getBoardList }
+// 게시글 상제 조회
+const getBoardDetail = async (req) => {
+  const res = await api.get('/board/read/3', req)
+  return res.data
+}
+
+export default { getBoardList, getBoardDetail }
