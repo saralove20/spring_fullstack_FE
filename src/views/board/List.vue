@@ -1,7 +1,8 @@
 <script setup>
+import api from '@/api/board/index'
+
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import api from '@/api/board/index'
 
 const router = useRouter()
 
@@ -51,6 +52,10 @@ onMounted(() => {
 const goToDetail = (idx) => {
   router.push(`/board/${idx}`)
 }
+
+const goToCreate = () => {
+  router.push('/board/create')
+}
 </script>
 
 <template>
@@ -61,7 +66,7 @@ const goToDetail = (idx) => {
         <h1 class="title">커뮤니티</h1>
         <p class="subtitle">다양한 사람들과 실시간으로 소통해보세요.</p>
       </div>
-      <button class="write-button"><span class="icon">+</span> 새 글 쓰기</button>
+      <button class="write-button" @click="goToCreate"><span class="icon">+</span> 새글쓰기</button>
     </header>
 
     <!-- 검색 및 필터 섹션 -->
